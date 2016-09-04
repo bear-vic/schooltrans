@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/title_red_bg" >
+
+    <Button
+        android:id="@+id/btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/img_menu"
+        android:text="登录"
+        android:visibility="gone" />
+	
+     <SearchView
+         	android:id="@+id/bar_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:queryHint="input here"
+            android:visibility="gone"
+            android:textAlignment="center">
+     </SearchView>
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/img_menu"
+        android:text="注销"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="WELCOME"
+        android:textColor="#fff"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/bar_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/img_menu"
+        android:text="发布商品"
+        android:visibility="gone" />
+
+</RelativeLayout>
