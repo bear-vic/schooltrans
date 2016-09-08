@@ -2,17 +2,18 @@ package com.example.schooltrans.base.impl;
 
 import java.util.ArrayList;
 
+import com.example.schooltrans.MainActivity;
 import com.example.schooltrans.R;
 import com.example.schooltrans.base.BasePager;
 import com.example.schooltrans.entity.ex.BundleQuery;
 import com.example.schooltrans.global.MyConstants;
-import com.example.schooltrans.utils.MyBitmapUtils;
 import com.example.schooltrans.utils.MyJsonUtils;
 import com.example.schooltrans.utils.MyLog;
 import com.example.schooltrans.utils.ToastUtils;
 import com.example.schooltrans.view.RefreshListView;
 import com.example.schooltrans.view.RefreshListView.OnRefreshListener;
 import com.google.gson.Gson;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -21,8 +22,11 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +36,8 @@ public class HomePager extends BasePager {
 	ViewHolder holder;
 	ArrayList<BundleQuery> bList;
 	View child;
-	MyBitmapUtils pu = new MyBitmapUtils();
+	BitmapUtils pu = new BitmapUtils(mActivity);
+	private MyAdapter mAdapter;
 
 	public HomePager(Activity activity) {
 		super(activity);
@@ -45,24 +50,31 @@ public class HomePager extends BasePager {
 		child = View.inflate(getmActivity(), R.layout.pager_home, null);
 		rf = (RefreshListView) child.findViewById(R.id.pag_list);
 		getDataFromServer(null);
-		// 设置下拉刷新监听
+		rf.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View arg1, int position, long arg3) {
+				BundleQuery b = mAdapter.getItem(position);
+				String url = MyConstants.LOOKDETAIL + "?goodsId=" + b.getGoods().getgId();
+				MainActivity m = (MainActivity) getmActivity();
+				WebFragment fragment = new WebFragment();
+				Bundle bundle = new Bundle();
+				bundle.putString(MyConstants.URL, url);
+				fragment.setArguments(bundle);
+				m.replaceFragment(fragment);
+			}
+		});
 		rf.setOnRefreshListener(new OnRefreshListener() {
 
 			@Override
 			public void onRefresh() {
-				// 从网络加载数据
 				getDataFromServer(null);
 			}
 
 			@Override
 			public void loadMore() {
-				
-				//getDataFromServer(null);
-				// 加载更多数据
-				ToastUtils.showToast(mActivity, "没有更多数据了");
+				rf.onRefreshComplete(true);
 			}
 		});
-
 	}
 
 	/**
@@ -79,7 +91,8 @@ public class HomePager extends BasePager {
 				String result = responseInfo.result;// 获取json字符串
 				try {
 					bList = handleResult(result);
-					rf.setAdapter(new MyAdapter());
+					mAdapter = new MyAdapter();
+					rf.setAdapter(mAdapter);
 					getFlContent().removeAllViews();
 					getFlContent().addView(child);
 					rf.onRefreshComplete(true);
@@ -140,7 +153,6 @@ public class HomePager extends BasePager {
 		}
 
 		public MyAdapter() {
-			// TODO Auto-generated constructor stub
 		}
 
 		@Override
@@ -150,13 +162,11 @@ public class HomePager extends BasePager {
 
 		@Override
 		public BundleQuery getItem(int position) {
-			// TODO Auto-generated method stub
 			return bList.get(position);
 		}
 
 		@Override
 		public long getItemId(int position) {
-			// TODO Auto-generated method stub
 			return position;
 		}
 

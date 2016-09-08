@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * 头条新闻ViewPager
  * 
  */
 public class HorizontalScrollViewPager extends ViewPager {
@@ -73,5 +72,4 @@ public class HorizontalScrollViewPager extends ViewPager {
 
 		return super.dispatchTouchEvent(ev);
 	}
-
 }

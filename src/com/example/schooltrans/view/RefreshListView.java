@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.example.schooltrans.R;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,8 +24,7 @@ import android.widget.TextView;
  * 下拉刷新的listview
  * 
  */
-public class RefreshListView extends ListView
-		implements OnScrollListener, android.widget.AdapterView.OnItemClickListener {
+public class RefreshListView extends ListView implements OnScrollListener, OnItemClickListener {
 
 	private static final int STATE_PULL_TO_REFRESH = 1;// 下拉刷新
 	private static final int STATE_RELEASE_TO_REFRESH = 2;// 松开刷新
@@ -112,6 +112,7 @@ public class RefreshListView extends ListView
 		this.setOnScrollListener(this);
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 		switch (ev.getAction()) {
@@ -236,6 +237,7 @@ public class RefreshListView extends ListView
 	/**
 	 * 设置上次刷新时间
 	 */
+	@SuppressLint("SimpleDateFormat")
 	private void setCurrentTime() {
 		// 08:10 8:10 1
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// HH表示24小时制

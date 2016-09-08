@@ -455,7 +455,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vpi__tab_unselected_pressed_holo=0x7f020041;
     }
     public static final class id {
-        public static final int action_settings=0x7f040038;
+        public static final int action_settings=0x7f040039;
         public static final int back=0x7f04001b;
         public static final int bar_publish=0x7f040037;
         public static final int bar_search=0x7f040035;
@@ -512,6 +512,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int underline=0x7f040002;
         public static final int useroperate_password_text=0x7f040033;
         public static final int vp_content=0x7f040010;
+        public static final int webview=0x7f040038;
     }
     public static final class integer {
         public static final int default_circle_indicator_orientation=0x7f070000;
@@ -539,6 +540,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pager_setting=0x7f03000f;
         public static final int pager_user=0x7f030010;
         public static final int title_bar=0x7f030011;
+        public static final int web=0x7f030012;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;

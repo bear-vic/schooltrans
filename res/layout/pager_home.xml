@@ -8,7 +8,6 @@
     <com.example.schooltrans.view.RefreshListView
         android:id="@+id/pag_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

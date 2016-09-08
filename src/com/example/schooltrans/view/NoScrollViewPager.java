@@ -17,7 +17,6 @@ public class NoScrollViewPager extends ViewPager {
 	public NoScrollViewPager(Context context) {
 		super(context);
 	}
-	
 	//决定事件是否中断
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {

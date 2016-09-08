@@ -145,7 +145,7 @@ int drawable vpi__tab_selected_pressed_holo 0x7f02003e
 int drawable vpi__tab_unselected_focused_holo 0x7f02003f
 int drawable vpi__tab_unselected_holo 0x7f020040
 int drawable vpi__tab_unselected_pressed_holo 0x7f020041
-int id action_settings 0x7f040038
+int id action_settings 0x7f040039
 int id back 0x7f04001b
 int id bar_publish 0x7f040037
 int id bar_search 0x7f040035
@@ -202,6 +202,7 @@ int id tv_uname 0x7f040026
 int id underline 0x7f040002
 int id useroperate_password_text 0x7f040033
 int id vp_content 0x7f040010
+int id webview 0x7f040038
 int integer default_circle_indicator_orientation 0x7f070000
 int integer default_title_indicator_footer_indicator_style 0x7f070001
 int integer default_title_indicator_line_position 0x7f070002
@@ -225,6 +226,7 @@ int layout pager_message 0x7f03000e
 int layout pager_setting 0x7f03000f
 int layout pager_user 0x7f030010
 int layout title_bar 0x7f030011
+int layout web 0x7f030012
 int menu main 0x7f0b0000
 int string action_settings 0x7f0a0002
 int string app_name 0x7f0a0000

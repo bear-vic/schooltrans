@@ -44,8 +44,16 @@ public class MainActivity extends FragmentActivity {
 		FragmentTransaction transaction = fm.beginTransaction();// 开始事务
 		// 将帧布局替换为对应的Fragment
 		transaction.replace(R.id.fl_content, fragment, TAG_CONTENT);
+		transaction.addToBackStack(TAG_CONTENT);
 		transaction.commit();// 提交事务
-		// fm.findFragmentByTag(TAG_CONTENT);
+	}
+
+	public void replaceFragment(Fragment fragment) {
+		// Fragment管理器
+		FragmentManager fm = getSupportFragmentManager();
+		FragmentTransaction transaction = fm.beginTransaction();// 开始事务
+		transaction.replace(R.id.fl_content, fragment);
+		transaction.commit();// 提交事务
 	}
 
 	/**
@@ -77,8 +85,9 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	public void onBackPressed() {
+		initFragment(getContentFragment());
 		if (System.currentTimeMillis() - exit >= 2000) {
-			ToastUtils.showToast(MainActivity.this, "再按一次退出");
+			//ToastUtils.showToast(MainActivity.this, "再按一次退出");
 			exit = System.currentTimeMillis();
 		} else {
 			finish();
